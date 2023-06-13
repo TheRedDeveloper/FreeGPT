@@ -7,7 +7,6 @@ from requests import post
 from flask import Flask
 
 app = Flask(__name__)
-config = {'host': '0.0.0.0', 'port': 1337, 'debug': True}
 headers = {
   'authority': 'chatforai.site',
   'origin': 'https://chatforai.site',
@@ -57,9 +56,3 @@ def _conversation():
 
 
 app.add_url_rule('/', view_func=_conversation, methods=['POST','GET'])
-
-print(f"Running on port {config['port']}")
-app.run(**config)
-print(f"Closing port {config['port']}")
-
-
