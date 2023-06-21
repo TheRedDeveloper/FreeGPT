@@ -48,11 +48,10 @@ def _conversation():
   except Exception as e:
     print(e)
     print(e.__traceback__.tb_next)
-    if "quota" in str(e) or "proxy" in str(e):
+    if (("quota" in str(e)) or ("proxy" in str(e))):
       proxy += 1
       print("--- CHANGING TO PROXY: "+cities[proxy]+" ---")
       return _conversation()
     return {'success': False, "error": f"an error occurred {str(e)}"}, 400
-
 
 app.add_url_rule('/', view_func=_conversation, methods=['POST','GET'])
