@@ -6,6 +6,7 @@ def TryProxy(url):
     try:
         res = get('https://chatforai.site/api/rate',proxies={"https":url})
         loc = str(res.json()["country"])+"-"+str(urllib.parse.unquote(str(res.json()["city"])))
+        if res.json()["rate"] >= 10: raise Exception("RATE EXCEEDED")
         print(url+","+loc)
     except:
         print(url+",FAIL")
