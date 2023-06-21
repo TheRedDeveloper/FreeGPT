@@ -44,12 +44,13 @@ def _conversation():
           ''
         }))
     print(gpt_resp.text)
+    if "quota" in str(e): raise Exception("Request requires new proxy")
     return app.response_class(gpt_resp.text, mimetype='text/markdown')
 
   except Exception as e:
     print(e)
     print(e.__traceback__.tb_next)
-    if (("quota" in str(e)) or ("proxy" in str(e))):
+    if "proxy" in str(e):
       proxy += 1
       print("--- CHANGING TO PROXY: "+cities[proxy]+" ---")
       return _conversation()
