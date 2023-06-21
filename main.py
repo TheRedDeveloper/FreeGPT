@@ -18,6 +18,7 @@ proxies = list(loads(open('proxies.json').read()))
 cities = list(loads(open('cities.json').read()))
 
 def _conversation():
+  print("# PROCESSING NEW REQUEST")
   global proxy
   try:
     conversation = loads(request.args.get("body"))
