@@ -44,7 +44,7 @@ def _conversation():
           ''
         }))
     print(gpt_resp.text)
-    if "quota" in str(e): raise Exception("Request requires new proxy")
+    if "quota" in gpt_resp.text: raise Exception("Request requires new proxy")
     return app.response_class(gpt_resp.text, mimetype='text/markdown')
 
   except Exception as e:
