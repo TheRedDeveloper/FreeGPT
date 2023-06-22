@@ -12,12 +12,12 @@ def TryProxy(url):
     except BaseException as e:
         print(url+",FAIL")
 def TryProxyDict(proxy):
-    # return TryProxy("http://"+proxy["IP"]+":"+proxy["PORT"])
-    return TryProxy("http://"+proxy)
+    return TryProxy("http://"+proxy["IP"]+":"+proxy["PORT"])
+    # return TryProxy("http://"+proxy)
 if __name__ == '__main__':
     print("fetching proxies...")
-    proxies = get("https://api.proxyscrape.com/v2/?request=displayproxies").text.splitlines()
-    # proxies = json.loads(open('Proxy List.json').read())
+    # proxies = get("https://api.proxyscrape.com/v2/?request=displayproxies").text.splitlines()
+    proxies = json.loads(open('Proxy List.json').read())
     print("proxies fetched!")
     pool = Pool(61)
     pool.map(TryProxyDict, proxies)
