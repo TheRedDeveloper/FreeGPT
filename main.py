@@ -21,6 +21,8 @@ cities = list(loads(open('cities.json').read()))
 def _conversation():
   print("# PROCESSING NEW REQUEST")
   global proxy
+  global proxies
+  global cities
   try:
     conversation = loads(request.args.get("body"))
     timestamp = int(time() * 1000)
