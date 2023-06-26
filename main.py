@@ -52,16 +52,13 @@ def _conversation():
 
   except Exception as e:
     print(e)
-    print(e.__traceback__.tb_next)
-    if "proxy" in str(e):
-      proxy += 1
-      if proxy >= len(cities):
-          os.system('python proxytest.py')
-          proxy = 0
-          proxies = list(loads(open('proxies.json').read()))
-          cities = list(loads(open('cities.json').read()))
-      print("--- CHANGING TO PROXY: "+cities[proxy]+" ---")
-      return _conversation()
-    return {'success': False, "error": f"an error occurred {str(e)}"}, 400
+    proxy += 1
+    if proxy >= len(cities):
+        os.system('python proxytest.py')
+        proxy = 0
+        proxies = list(loads(open('proxies.json').read()))
+        cities = list(loads(open('cities.json').read()))
+    print("--- CHANGING TO PROXY: "+cities[proxy]+" ---")
+    return _conversation()
 
 app.add_url_rule('/', view_func=_conversation, methods=['POST','GET'])
