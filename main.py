@@ -19,6 +19,7 @@ proxies = list(loads(open('proxies.json').read()))
 cities = list(loads(open('cities.json').read()))
 
 def _conversation():
+  if request.args.get("body") == None: return app.response_class('BODY EMPTY')
   print("# PROCESSING NEW REQUEST")
   global proxy
   global proxies
