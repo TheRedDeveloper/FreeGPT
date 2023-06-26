@@ -3,6 +3,7 @@ from time import time
 from flask import request
 from hashlib import sha256
 from requests import post
+import os
 
 from flask import Flask
 
@@ -52,6 +53,11 @@ def _conversation():
     print(e.__traceback__.tb_next)
     if "proxy" in str(e):
       proxy += 1
+      if proxy >= len(cities):
+          os.system('python proxytest.py')
+          proxy = 0
+          proxies = list(loads(open('proxies.json').read()))
+          cities = list(loads(open('cities.json').read()))
       print("--- CHANGING TO PROXY: "+cities[proxy]+" ---")
       return _conversation()
     return {'success': False, "error": f"an error occurred {str(e)}"}, 400
