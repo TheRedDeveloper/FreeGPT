@@ -1,6 +1,9 @@
 # FreeGPT
+> [!CAUTION]
+> For education purposes only. Not intended to for abuse. Target went down long ago.
+
 As the name implies this is a workaround allowing for essentially unlimited usage of GPT 3.5 Turbo.
-It abuses that the demo of [chatforai.site](https://chatforai.site) can be used 10 times a day per city, so all it does is use proxies to simulate being in different cities.
+Relying on the demo of [chatforai.site](https://chatforai.site) being usable 10 times a day per city, so all it does is use proxies to simulate being in different cities.
 
 # License
 This work is licensed under a
